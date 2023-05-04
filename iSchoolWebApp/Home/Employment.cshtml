@@ -1,0 +1,84 @@
+﻿@model iSchoolWebApp.Models.EmploymentRootModel
+@{
+    ViewData["Title"] = "iSchool Alumni Employment";
+}
+
+<div class="duo">
+    <h1>
+    @Model.introduction.title
+    </h1>
+    <br/>
+    @foreach(var duo in Model.introduction.content)
+    {
+        <div>
+            <h3>@duo.title</h3>            
+            <p>@duo.description</p>
+        </div>
+        <br/>
+    }
+</div>
+
+<div class="stats">
+    <h3>
+    @Model.degreeStatistics.title
+    </h3>
+    @foreach(var stat in Model.degreeStatistics.statistics)
+    {
+        <div>
+            <h2><b>@stat.value</b></h2>
+            <b>@stat.description</b>
+            <hr/>
+        </div>
+    }
+</div>
+
+<br/>
+
+<div class="careers">
+    <h2>
+        @Model.careers.title
+    </h2>
+
+    <ul>
+        @foreach(var career in Model.careers.careerNames)
+        {
+            <li>@career</li>
+        }
+    </ul>
+</div>
+
+<br/>
+
+<div class="coTable">
+    <h2>
+        @Model.coopTable.title
+    </h2>
+
+    @foreach(var coop in Model.coopTable.coopInformation)
+    {
+        <div>
+            <h4>@coop.employer</h4>
+            <h5>@coop.degree</h5>
+            <p>@coop.city</p>
+            <h4>@coop.term</h4>
+            <hr/>
+        </div>
+    }
+</div>
+
+<div class="empTable">
+    <h2>
+        @Model.employmentTable.title
+    </h2>
+
+    @foreach(var job in Model.employmentTable.professionalEmploymentInformation)
+    {
+        <div>
+            <h4>@job.employer</h4>
+            <h5>@job.degree</h5>
+            <p>Job Title: @job.title</p>
+            <p>@job.city</p>
+            <hr/>
+        </div>
+    }
+</div>

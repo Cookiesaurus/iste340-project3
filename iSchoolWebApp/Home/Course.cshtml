@@ -1,0 +1,30 @@
+﻿@model iSchoolWebApp.Models.CourseRootModel
+@{
+    ViewData["Title"] = "iSchool Courses";
+}
+
+<body>
+    <h2>
+        iSchool Course Offerings
+    </h2>
+    <hr/>
+    @foreach(var course in Model.Course)
+    {
+        <div class="courseCard">
+            @if (course.description != "Desc" && course.description != "[Need course description]")
+            {
+                <h4>@course.courseID</h4>
+                <b>@course.title</b>
+                <p>@course.description</p>
+                <br/>
+            }
+            else
+            {
+                <h4>@course.courseID</h4>
+                <b>@course.title</b>
+                <br/>
+            }
+        </div>
+    }
+</body>
+</html>

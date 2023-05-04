@@ -1,0 +1,78 @@
+﻿@model iSchoolWebApp.Models.DegreesRootModel
+@{
+    ViewData["Title"] = "iSchool Degree Programs";
+}
+
+<html>
+    <body>
+
+        <h1>iSchool Degree Programs</h1>
+        <br/>
+
+        <h2>Undergraduate Degrees</h2>
+        <hr/>
+
+        <div>
+            @foreach (var deg in Model.undergraduate)
+            {
+                <div class="degree">
+                    <h2><b>@deg.degreeName.ToUpper()</b></h2>
+                    <h3>
+                        @deg.title
+                    </h3>
+                    <p>@deg.description</p>
+
+                    <h4><u>Concentrations</u></h4>
+                    @foreach (var con in deg.concentrations)
+                    {
+                        <p>@con</p>
+                    }
+                </div>
+                <hr/>
+            }
+        </div>
+
+        <br/>
+
+
+        <h1>Graduate Degrees</h1>
+        <hr/>
+
+        <div id="graduate">
+            @foreach (var deg in Model.graduate)
+            {
+
+                <div class="degree">
+                    @if(deg.degreeName == "graduate advanced certificates")
+                    {
+                        <h2><b>@deg.degreeName.ToUpper()</b></h2>
+                        <p>@deg.description</p>
+
+                        <h4><u>Available Certificates</u></h4>
+
+                        @foreach (var cert in deg.availableCertificates)
+                        {
+                            <p>@cert</p>
+                        }
+                    }
+                    else
+                    {
+                        <h2><b>@deg.degreeName.ToUpper()</b></h2>
+                        <h3>
+                            @deg.title
+                        </h3>
+                        <p>@deg.description</p>
+
+                        <h4><u>Concentrations</u></h4>
+
+                        @foreach (var con in deg.concentrations)
+                        {
+                            <p>@con</p>
+                        }
+                        <hr/>
+                    }
+                </div>
+            }
+        </div>
+    </body>
+</html>
